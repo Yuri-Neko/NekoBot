@@ -57,8 +57,8 @@ module.exports = {
                }, 
              }], 
              viewOnce: true, 
-             headerType: 6,
-        })
+             headerType: 6
+            })
 
         // Reward calculations
         let moneyReward, coinReward;
@@ -116,5 +116,5 @@ module.exports = {
              headerType: 6,
         })
     }
-  }
+
 }
