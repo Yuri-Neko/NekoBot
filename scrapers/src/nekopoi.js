@@ -105,7 +105,7 @@ class NekoPoi {
     }
     search = async function search(q) {
         return new Promise(async (resolve, reject) => {
-            await fetch("h*ttps://nekopoi.care/?s=" + q).then(async (html) => {
+            await fetch("https://nekopoi.care/?s=" + q).then(async (html) => {
                 let $ = cheerio.load(await html.text());
                 let episode = [];
                 $(".result ul li").each((ul, el) => {
