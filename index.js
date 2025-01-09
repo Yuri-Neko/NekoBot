@@ -257,6 +257,9 @@
       const chatUpdate = cht.messages[0];
       if (!chatUpdate.message) return;
       const userId = chatUpdate.key.id;
+      if (Object.keys(store.groupMetadata).length === 0) {
+        return store.groupMetadata = await sock.groupFetchAllParticipating();
+      }
       messageQueue.add(userId, chatUpdate);
       if (!messageQueue.processing[userId]) {
         messageQueue.processQueue(userId, async (message) => {
