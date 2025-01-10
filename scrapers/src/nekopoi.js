@@ -105,15 +105,9 @@ class NekoPoi {
     }
     search = async function search(q) {
         return new Promise(async (resolve, reject) => {
-<<<<<<< HEAD
             await fetch("h*ttps://nekopoi.care/?s=" + q).then(async (html) => {
                 const $ = cheerio.load(await html.text());
                 const episode = [];
-=======
-            await fetch("https://nekopoi.care/?s=" + q).then(async (html) => {
-                let $ = cheerio.load(await html.text());
-                let episode = [];
->>>>>>> 23fda036f9aa15ad88d1568aaeffd46e1f0d2bc4
                 $(".result ul li").each((ul, el) => {
                     const link = $(el).find("h2 a").attr("href");
                     episode.push({
