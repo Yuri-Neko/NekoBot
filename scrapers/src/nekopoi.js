@@ -69,8 +69,8 @@ class NekoPoi {
     episode = async function episode(url) {
         return new Promise(async (resolve, reject) => {
             await fetch(url).then(async (html) => {
-                let $ = cheerio.load(await html.text());
-                let result = {
+                const $ = cheerio.load(await html.text());
+                const result = {
                     metadata: {},
                     download: []
                 };
@@ -84,8 +84,8 @@ class NekoPoi {
                 });
                 result.metadata.stream = $("#show-stream").find("#stream1 iframe").attr("src");
                 $(".liner").each((ul, el) => {
-                    let name = $(el).find(".name").text();
-                    let links = [];
+                    const name = $(el).find(".name").text();
+                    const links = [];
                     $(el)
                         .find(".listlink a")
                         .each((j, link) => {
@@ -106,10 +106,10 @@ class NekoPoi {
     search = async function search(q) {
         return new Promise(async (resolve, reject) => {
             await fetch("h*ttps://nekopoi.care/?s=" + q).then(async (html) => {
-                let $ = cheerio.load(await html.text());
-                let episode = [];
+                const $ = cheerio.load(await html.text());
+                const episode = [];
                 $(".result ul li").each((ul, el) => {
-                    let link = $(el).find("h2 a").attr("href");
+                    const link = $(el).find("h2 a").attr("href");
                     episode.push({
                         title: $(el).find("h2 a").text().trim(),
                         type: link.split("/hentai/")[1] ? "Hentai Series" : "Hentai Episodes",
