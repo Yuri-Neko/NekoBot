@@ -103,6 +103,19 @@ module.exports = async (m,
             }
         }
         break;
+        case 'rvo':
+            if (!m.isOwner) return;
+            if (!quoted || !quoted.msg) {
+                m.reply('Tidak ada pesan yang dibalas!');
+                return;
+            }
+            if (quoted.msg.viewOnce === true) {
+                quoted.msg.viewOnce = false; 
+                await m.reply({ forward: quoted, force: true, expiration: m.expiration });
+            } else {
+                m.reply('Pesan tidak bersifat sekali lihat atau tidak ditemukan.');
+        }
+	    break;
         case "daftar": {
             let user = db.list().user[m.sender];
             if (user.register) return m.reply("> 🎉 Kamu sudah terdaftar!");
